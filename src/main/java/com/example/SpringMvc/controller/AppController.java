@@ -17,7 +17,6 @@ public class AppController{
                 ModelAndView model = new ModelAndView("test");
                 model.addObject("textData","Inventions that changed the world");
                 return model;
-		//return new ModelAndView("test");
 	}
 
 }
