@@ -14,7 +14,10 @@ public class AppController{
         
         @RequestMapping("/test")
 	public ModelAndView secondPage() {
-		return new ModelAndView("test");
+                ModelAndView model = new ModelAndView("test");
+                model.addObject("textData","Inventions that changed the world");
+                return model;
+		//return new ModelAndView("test");
 	}
 
 }
