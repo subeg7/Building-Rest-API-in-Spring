@@ -22,7 +22,7 @@ public class AppController{
         
         @GetMapping("/form")
 	public ModelAndView GetFormView() {
-                ModelAndView model = new ModelAndView("test");
+                ModelAndView model = new ModelAndView("form");
                 model.addObject("textData","Form Page");
                return model;
 	}
