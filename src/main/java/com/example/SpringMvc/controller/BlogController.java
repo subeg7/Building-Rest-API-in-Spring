@@ -6,7 +6,14 @@
 package com.example.SpringMvc.controller;
 
 
+import com.example.SpringMvc.database.Blog;
+import com.example.SpringMvc.database.BlogRepository;
+import java.util.List;
+import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.web.bind.annotation.RestController;
 //import java.util.Map;
@@ -16,12 +23,43 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Acerimport java.util.List;
  */
-@RestController
+@RestController("/api")
 public class BlogController {
+    
+        @Autowired
+        BlogRepository blogRepository;
     
         @GetMapping("/")    
         public String homePage(){
-          return "<h1>Spring is back again</h1>";
+          return "<h1>Give me one reason and i will turn around</h1>";
+        }
+        
+        @GetMapping("/blogs")
+        public List<Blog> showAllBlogs() throws Exception{
+            List<Blog> blogs = null ;
+            try{
+                 blogs = blogRepository.findAll();
+
+            }catch(Exception e){
+//                return "blog is empty";
+            }
+            return blogs;
+            
+        }
+        
+        @PostMapping("/create")
+        public String createNewBlog(@RequestBody Map<String, String> body){
+                String userEnteredTitle = body.get("title");
+                String userEnteredContent = body.get("content");
+                
+//                Blog blog = 
+                blogRepository.save(new Blog("staticBlog","static content regardless of user"));
+                return "Success!! your blog has been stored successfully";
+//                return blog.toString();
+
+//            Blog blog = new Blog();
+            
+//            return " : Data you posted is title:"+body.get("title")+" and content:"+body.get("content");
         }
 
 }
