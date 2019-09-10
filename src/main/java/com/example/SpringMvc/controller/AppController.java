@@ -1,30 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.example.SpringMvc.Controller;
 
-package com.example.SpringMvc.controller;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
-
-@Controller
-public class AppController{
-	@RequestMapping("/welcome")
-	public ModelAndView firstPage() {
-		return new ModelAndView("welcome");
-	}
-        
-        @RequestMapping("/test")
-	public ModelAndView secondPage() {
-                ModelAndView model = new ModelAndView("test");
-                model.addObject("textData","Inventions that changed the world");
-                return model;
-	}
-        
-        @GetMapping("/form")
-	public ModelAndView GetFormView() {
-                ModelAndView model = new ModelAndView("form");
-                model.addObject("textData","Form Page");
-               return model;
-	}
-
+/**
+ *
+ * @author Acer
+ */
+public class AppController {
+    
 }
