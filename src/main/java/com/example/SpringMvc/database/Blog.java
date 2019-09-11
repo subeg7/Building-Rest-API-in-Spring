@@ -5,10 +5,13 @@
  */
 package com.example.SpringMvc.database;
 
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -22,6 +25,9 @@ public class Blog  {
     
     private String title;
     private String content;
+    
+    @OneToMany(mappedBy="blog_id", cascade = CascadeType.ALL)
+    private List<Comment> comments;
 
    
     

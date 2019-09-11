@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 /**
@@ -22,6 +24,13 @@ public class Comment   {
     private int id;
     
     private int blog_id;
+   private String comment;
+
+   
+   @ManyToOne
+   @JoinColumn
+    private Blog blog;
+
 
     public int getBlog_id() {
         return blog_id;
@@ -38,7 +47,6 @@ public class Comment   {
     public void setComment(String comment) {
         this.comment = comment;
     }
-    private String comment;
     
 //    public Comment(String comment,blog_){
         
