@@ -34,7 +34,7 @@ public class BlogController {
           return "<h1>Give me one reason and i will turn around</h1>";
         }
         
-        @GetMapping("/blogs")
+       @GetMapping("/blogs")
         public List<Blog> showAllBlogs() throws Exception{
             List<Blog> blogs = null ;
             try{
@@ -52,14 +52,8 @@ public class BlogController {
                 String userEnteredTitle = body.get("title");
                 String userEnteredContent = body.get("content");
                 
-//                Blog blog = 
-                blogRepository.save(new Blog("staticBlog","static content regardless of user"));
+                blogRepository.save(new Blog(userEnteredTitle,userEnteredContent    ));
                 return "Success!! your blog has been stored successfully";
-//                return blog.toString();
-
-//            Blog blog = new Blog();
-            
-//            return " : Data you posted is title:"+body.get("title")+" and content:"+body.get("content");
         }
 
 }

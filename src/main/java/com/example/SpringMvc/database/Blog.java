@@ -5,7 +5,6 @@
  */
 package com.example.SpringMvc.database;
 
-import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,9 +15,9 @@ import javax.persistence.Id;
  * @author Acer
  */
 @Entity
-public class Blog implements Serializable {
+public class Blog  {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     
     private String title;
