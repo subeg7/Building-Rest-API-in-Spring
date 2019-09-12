@@ -5,6 +5,7 @@
  */
 package com.example.SpringMvc.database;
 
+import com.example.SpringMvc.Entities.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

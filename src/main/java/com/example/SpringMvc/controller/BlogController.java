@@ -6,7 +6,7 @@
 package com.example.SpringMvc.controller;
 
 
-import com.example.SpringMvc.database.Blog;
+import com.example.SpringMvc.Entities.Blog;
 import com.example.SpringMvc.database.BlogRepository;
 import java.util.List;
 import java.util.Map;

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.SpringMvc.database;
+package com.example.SpringMvc.Entities;
 
+import com.example.SpringMvc.Entities.Blog;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,26 +20,19 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class Comment   {
-        @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     
-    private int blog_id;
    private String comment;
 
    
    @ManyToOne
-   @JoinColumn
-    private Blog blog;
+   @JoinColumn(name="blog_id")
+   private Blog blog;
+   
 
 
-    public int getBlog_id() {
-        return blog_id;
-    }
-
-    public void setBlog_id(int blog_id) {
-        this.blog_id = blog_id;
-    }
 
     public String getComment() {
         return comment;

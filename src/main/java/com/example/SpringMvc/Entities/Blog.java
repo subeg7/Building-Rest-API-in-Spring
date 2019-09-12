@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.SpringMvc.database;
+package com.example.SpringMvc.Entities;
 
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -25,10 +25,17 @@ public class Blog  {
     
     private String title;
     private String content;
-    
-    @OneToMany(mappedBy="blog_id", cascade = CascadeType.ALL)
+   
+    @OneToMany(mappedBy="blog")
     private List<Comment> comments;
 
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
    
     
     public Blog(){
