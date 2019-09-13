@@ -5,6 +5,7 @@
  */
 package com.example.SpringMvc.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -28,7 +29,7 @@ public class Blog  {
    
     @OneToMany(mappedBy="blog")
     private List<Comment> comments;
-
+    
     public List<Comment> getComments() {
         return comments;
     }
