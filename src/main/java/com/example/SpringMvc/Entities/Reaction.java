@@ -5,14 +5,15 @@
  */
 package com.example.SpringMvc.Entities;
 
-import com.example.SpringMvc.Entities.Blog;
+import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 
@@ -21,28 +22,28 @@ import javax.persistence.Table;
  * @author Acer
  */
 @Entity
-@Table(name="comments")
-public class Comment   {
+@Table(name="reaction")
+public class Reaction {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     
-   private String comment;
-
+    private String name;
+    
+    @ManyToMany(fetch=FetchType.LAZY,
+                mappedBy="blogReactions"
+            )
+    List<Blog> reactedBlogs;
    
-   @ManyToOne(fetch = FetchType.LAZY)
-   @JoinColumn(name="blog_id")
-   private Blog blog;
-   
 
-
-
-    public String getComment() {
-        return comment;
+    public String getName() {
+        return name;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setName(String name) {
+        this.name = name;
     }
-
+    
+    
 }

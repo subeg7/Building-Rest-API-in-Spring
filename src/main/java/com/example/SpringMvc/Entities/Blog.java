@@ -9,9 +9,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 
 /**
@@ -27,8 +30,23 @@ public class Blog  {
     private String title;
     private String content;
    
-    @OneToMany(mappedBy="blog")
+    @OneToMany(
+            mappedBy="blog",
+            fetch = FetchType.LAZY
+    )
     private List<Comment> comments;
+    
+    
+    @JoinTable(
+      name = "blog_reaction", 
+      joinColumns = @JoinColumn(name = "blog_id"), 
+      inverseJoinColumns = @JoinColumn(name = "reaction_id")
+    )  
+    List<Reaction> blogReaction;
+    
+    
+    
+    
     
     public List<Comment> getComments() {
         return comments;
