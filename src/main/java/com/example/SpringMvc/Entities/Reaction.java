@@ -34,7 +34,7 @@ public class Reaction {
     @ManyToMany(fetch=FetchType.LAZY,
                 mappedBy="blogReactions"
             )
-    List<Blog> reactedBlogs;
+    private List<Blog> allBllogsOfCertainReaction;
    
 
     public String getName() {

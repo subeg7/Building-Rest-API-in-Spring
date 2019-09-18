@@ -15,13 +15,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author Acer
  */
 @Entity
+@Table(name="blog")
 public class Blog  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,26 +37,35 @@ public class Blog  {
             mappedBy="blog",
             fetch = FetchType.LAZY
     )
-    private List<Comment> comments;
+    private List<Comment> allComments;
     
     
+    @ManyToMany
     @JoinTable(
       name = "blog_reaction", 
       joinColumns = @JoinColumn(name = "blog_id"), 
       inverseJoinColumns = @JoinColumn(name = "reaction_id")
     )  
-    List<Reaction> blogReaction;
+    private List<Reaction> blogReactions;
+
+    public List<Reaction> getBlogReactions() {
+        return blogReactions;
+    }
+
+    public void setBlogReactions(List<Reaction> blogReactions) {
+        this.blogReactions = blogReactions;
+    }
     
     
     
     
     
     public List<Comment> getComments() {
-        return comments;
+        return allComments;
     }
 
     public void setComments(List<Comment> comments) {
-        this.comments = comments;
+        this.allComments = comments;
     }
    
     
